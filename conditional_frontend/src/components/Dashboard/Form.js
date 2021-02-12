@@ -32,7 +32,7 @@ export default function Form() {
 
   const onHandleChnage = (index, event) => {
     const values = [...inputFields]
-    values[index][event.target.name] = event.target.values
+    values[index][event.target.name] = event.target.value
     setinputFields(values)
     console.log(inputFields)
 
