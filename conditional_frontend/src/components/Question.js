@@ -36,7 +36,7 @@ export default function Question(props) {
       <div className="d-flex mt-5 flex-end">
         <Button
             variant="contained"
-            color="default"
+            color="secondary"
             size="large"
             onClick={handleClick}
         >

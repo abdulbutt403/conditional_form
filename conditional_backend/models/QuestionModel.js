@@ -3,37 +3,37 @@ const mongoose = require("mongoose");
 
 const QusetionSchema = new mongoose.Schema({
 
-    list : [
-     {
-        MainQuestion: {
+        statement: {
             type: String,
             required: true,
           },
-        Mainimage: {
+        opt1: {
             type: String,
             required: true,
           },
-        option1: {
+        opt2: {
             type: String,
             required: true,
           },
-        option2: {
+        opt3: {
             type: String,
             required: true,
           },
-        option3: {
+        file1: {
             type: String,
             required: true,
           },
-        ConditionalQuestion: {
+        file2: {
             type: String,
             required: true,
-          },
-     }
-    ]
+        },
+        file3: {
+            type: String,
+            required: true,
+        },
 
 });
 
 
 
-module.exports = Questions = mongoose.model("questions", CompanySchema);
+module.exports = Questions = mongoose.model("questions", QusetionSchema);

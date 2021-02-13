@@ -75,21 +75,6 @@ h2 {
   top: 2px;
   font-size: 14px; }
 
-.bg.order-1.order-md-2{
-  background-image: url('images/bg2.jpg');
-}
-.bg.order-1.order-md-2.homo{
-  background-image: url('images/bg3.jpg');
-}
-.bg.order-1.order-md-2.first{
-  background-image: url('images/bg4.jpg');
-}
-.bg.order-1.order-md-2.second{
-  background-image: url('images/bg5.jpg');
-}
-.bg.order-1.order-md-2.third{
-  background-image: url('images/bg6.jpg');
-}
 
 .bg.order-1.order-md-2 {
   transition: background 1s ease-in-out;

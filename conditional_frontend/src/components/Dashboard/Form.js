@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 import Fields from './Fields';
-
+import axios from 'axios'
 
 
 
@@ -34,19 +34,48 @@ export default function Form() {
     const values = [...inputFields]
     values[index][event.target.name] = event.target.value
     setinputFields(values)
-    console.log(inputFields)
 
+  }
+
+  
+  const onFileChnage = (index, event , url) => {
+    const values = [...inputFields]
+    values[index][event.target.name] = url
+    setinputFields(values)
+    console.log(inputFields)
   }
 
   const Increment = () => {  
     
-     setinputFields([...inputFields, {statement: "" , opt1: "", opt2: "", opt3: ""}])
-     console.log(inputFields)
+     setinputFields([...inputFields, {statement: "" , opt1: "", opt2: "", opt3: "" , file1: "", file2: "", file3: "" }])
+     
+  }
+
+  const handleSubmit = async () => {
+    try {
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',   
+    
+        }
+      }
+
+    
+      
+      const body = JSON.stringify(inputFields);
+      const res = await axios.post('http://localhost:5000/api/question/', body , config);
+      alert(res);
+    } catch (err) {
+      alert(err)
+      
+    }
+  
   }
 
   return (
-    <form className={classes.form}  noValidate autoComplete="off">
-      {inputFields.map((inputField , index) => <Fields key={index} statement={inputField.statement} opt1={inputField.opt1} opt2={inputField.opt2} opt3={inputField.opt3} index={index} handleChange={onHandleChnage}/>)}
+    <form className={classes.form}  noValidate autoComplete="off" onSubmit={handleSubmit}>
+      {inputFields.map((inputField , index) => <Fields key={index} statement={inputField.statement} opt1={inputField.opt1} opt2={inputField.opt2} opt3={inputField.opt3} index={index} handleChange={onHandleChnage} fileChange={onFileChnage}/>)}
      
 
      <div className="d-flex">
@@ -67,7 +96,7 @@ export default function Form() {
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
-        onClick={Increment}
+        onClick={handleSubmit}
         style={{marginLeft : -5 , background: "#006AEE" , color : "#fff"}}
       >
         Save
