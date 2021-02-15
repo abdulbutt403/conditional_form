@@ -31,6 +31,15 @@ const QusetionSchema = new mongoose.Schema({
             type: String,
             required: true,
         },
+        inc1: {
+          type: Number,
+        },
+        inc2: {
+            type: Number,
+        },
+        inc3: {
+            type: Number,
+        },
 
 });
 

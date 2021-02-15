@@ -34,6 +34,7 @@ export default function Form() {
     const values = [...inputFields]
     values[index][event.target.name] = event.target.value
     setinputFields(values)
+    console.log(inputFields)
 
   }
 
@@ -47,7 +48,7 @@ export default function Form() {
 
   const Increment = () => {  
     
-     setinputFields([...inputFields, {statement: "" , opt1: "", opt2: "", opt3: "" , file1: "", file2: "", file3: "" }])
+     setinputFields([...inputFields, {statement: "" , opt1: "", opt2: "", opt3: "" , file1: "", file2: "", file3: "" , inc1: "" , inc2: "" , inc3: ""}])
      
   }
 
@@ -73,9 +74,12 @@ export default function Form() {
   
   }
 
+  
+ 
+
   return (
-    <form className={classes.form}  noValidate autoComplete="off" onSubmit={handleSubmit}>
-      {inputFields.map((inputField , index) => <Fields key={index} statement={inputField.statement} opt1={inputField.opt1} opt2={inputField.opt2} opt3={inputField.opt3} index={index} handleChange={onHandleChnage} fileChange={onFileChnage}/>)}
+    <form onSubmit={handleSubmit} method="POST" className={classes.form}  autoComplete="off" >
+      {inputFields.map((inputField , index) => <Fields key={index} statement={inputField.statement} opt1={inputField.opt1} opt2={inputField.opt2} opt3={inputField.opt3} inc1={inputField.inc1} inc2={inputField.inc2} inc3={inputField.inc3} index={index} handleChange={onHandleChnage} fileChange={onFileChnage} length={inputFields.length}/> )}
      
 
      <div className="d-flex">
@@ -96,7 +100,7 @@ export default function Form() {
         size="large"
         className={classes.button}
         startIcon={<SaveIcon />}
-        onClick={handleSubmit}
+        type="submit"
         style={{marginLeft : -5 , background: "#006AEE" , color : "#fff"}}
       >
         Save

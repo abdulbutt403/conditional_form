@@ -1,8 +1,12 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles';
 
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +26,10 @@ const useStyles = makeStyles((theme) => ({
       width: '100ch',
     },
   
-  
+    formControl: {
+      margin: theme.spacing(3),
+      minWidth: 120,
+    },
   
     
   }));
@@ -30,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
   
 export default function Fields(props) {
     const classes = useStyles();
-    const {index, handleChange , fileChange} = props;
-
+    const {index, handleChange , fileChange , length} = props;
+   
 
     const uploadImage = async (event) => {
 
@@ -44,6 +51,7 @@ export default function Fields(props) {
      fileChange(index, event , res.data.url)
     }
 
+
     return (
       <div className="mt-5">
       <TextField 
@@ -53,7 +61,8 @@ export default function Fields(props) {
       className={classes.root}
       variant="outlined"
       multiline
-      onChange = {event => handleChange(index,event)} />
+      onChange = {event => handleChange(index,event)} 
+      required/>
 
 
 
@@ -65,8 +74,20 @@ export default function Fields(props) {
       label="OPTION 1" 
       name="opt1" 
       className={classes.mcq}
-      onChange = {event => handleChange(index,event)} />
-       <input  type="file" className="upload-box mt-4" name="file1" onChange={event => uploadImage(event)}/>
+      onChange = {event => handleChange(index,event)} 
+      required/>
+       <input  type="file" className="upload-box mt-4" name="file1" onChange={event => uploadImage(event)} required/>
+      
+       <TextField 
+        id="standard-basic" 
+        value={props.inc1} 
+        label="ENTER NEXT" 
+        name="inc1" 
+        InputProps={{ inputProps: { min: 1 , max: length } }}
+        type="number"
+        className={classes.mcq}
+        onChange = {event => handleChange(index,event)} />
+     
       </div>
 
 
@@ -79,7 +100,16 @@ export default function Fields(props) {
        name="opt2" 
        className={classes.mcq}
        onChange = {event => handleChange(index,event)}  />
-       <input  type="file" className="upload-box mt-4" name="file2" onChange={event => uploadImage(event)}/>
+       <input  type="file" className="upload-box mt-4" name="file2" onChange={event => uploadImage(event)} required/>
+       <TextField 
+        id="standard-basic" 
+        value={props.inc2} 
+        label="ENTER NEXT" 
+        InputProps={{ inputProps: { min: 1 , max: length } }}
+        type="number"
+        name="inc2" 
+        className={classes.mcq}
+        onChange = {event => handleChange(index,event)} />
       </div>
       
       <div className="d-flex align-items-center">
@@ -91,8 +121,17 @@ export default function Fields(props) {
         className={classes.mcq}
         onChange = {event => handleChange(index,event)}
       />
-       <input  type="file" className="upload-box mt-4" name="file3" onChange={event => uploadImage(event)}/>
-      </div>
+       <input  type="file" className="upload-box mt-4" name="file3" onChange={event => uploadImage(event)} required/>
+       <TextField 
+        id="standard-basic" 
+        value={props.inc3} 
+        label="ENTER NEXT" 
+        InputProps={{ inputProps: { min: 1 , max: length } }}
+        type="number"
+        name="inc3" 
+        className={classes.mcq}
+        onChange = {event => handleChange(index,event)} />
+        </div>
 
     </div>
     )

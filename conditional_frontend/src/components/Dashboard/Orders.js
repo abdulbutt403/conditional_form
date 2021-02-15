@@ -1,4 +1,5 @@
-import React , {useState} from 'react';
+import React ,{useState,useEffect} from 'react';
+import axios from 'axios';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -29,6 +30,7 @@ const rows = [
   createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
 ];
 
+
 function preventDefault(event) {
   event.preventDefault();
 }
@@ -46,6 +48,30 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Orders(props) {
   const classes = useStyles();
+  const [Array, setArray] = useState([{
+
+  }])
+
+
+  useEffect(()=>{
+    
+    axios
+      .get('http://localhost:5000/api/question/')
+      .then(response => {
+        setArray(response.data)
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+       
+  
+    
+    
+    
+  }, [])
+  
+  
   return (
     <React.Fragment>
        <Typography component="p" className="emp-tag" variant="p">
@@ -55,19 +81,24 @@ export default function Orders(props) {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
             <TableCell>Question</TableCell>
-            <TableCell>Conditonal Question</TableCell>
+            
+            <TableCell>OPTION 1</TableCell>
+  
+            <TableCell>OPTION 2</TableCell>
+            
+            <TableCell>OPTION 3</TableCell>
             <TableCell >Delete</TableCell>
 
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {Array.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.statement}</TableCell>
+              <TableCell>{row.opt1}</TableCell>
+              <TableCell>{row.opt2}</TableCell>
+              <TableCell>{row.opt3}</TableCell>
               <TableCell >
               <Button
         variant="contained"
