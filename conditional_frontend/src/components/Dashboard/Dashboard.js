@@ -23,6 +23,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Orders from './Orders';
 import MainPic from './mainimg';
 import Form from './Form';
+import Edit from './Edit';
 
 
 function Copyright() {
@@ -217,6 +218,7 @@ export default function Dashboard() {
                           <Route exact path="/dashboard/" component={MainPic} />
                           <Route exact path="/dashboard/add" component={Form} />
                           <Route exact path="/dashboard/list" component={Orders} />
+                          <Route exact path="/dashboard/edit" component={Edit} />
                         </Switch>
                 </Router>
                 

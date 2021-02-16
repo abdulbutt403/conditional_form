@@ -16,22 +16,28 @@ export default function Form() {
     const Increment = (x) => {
 
 
-      console.log(Array[count].inc1)
+    
+
+       let jump = 1;
+       let index = count+1
       
-       console.log(x==1)
+    
 
       if(x==1){
-         setInc(Array[count].inc1)
+         jump = Array[count].inc1 - index
+
       }
       else if(x==2){
-         setInc(Array[count].inc2)
+        jump = Array[count].inc2 - index
+
       }
       else if(x==3){
-        setInc(Array[count].inc3)
+        jump = Array[count].inc3 - index
+    
       }
 
        if(count<Array.length-1)
-        setCount(count+1)
+        setCount(count+jump)
 
 
     }
@@ -82,7 +88,7 @@ export default function Form() {
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-7 bg-pink faded">
                  <div>
-                   <Question statement={Array[count].statement} q1={Array[count].opt1} q2={Array[count].opt2} q3={Array[count].opt3}  name="selector1" nextQuestion={Increment} setBackground={setBackgoundImage}/>
+                   <Question statement={Array[count].statement} q1={Array[count].opt1} q2={Array[count].opt2} q3={Array[count].opt3}  name="selector1" nextQuestion={Increment} index={count} setBackground={setBackgoundImage}/>
                  </div>
                 </div>
             </div>

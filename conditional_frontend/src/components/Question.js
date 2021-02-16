@@ -15,6 +15,8 @@ export default function Question(props) {
     }
     return (
      <div className="container">
+         <h1>{props.index+1}</h1>
+         
       <div >
                   <h4 className="mb-3 fade-in">{props.statement}</h4>
       </div>

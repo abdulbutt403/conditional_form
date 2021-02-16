@@ -12,16 +12,21 @@ router.post( "/", async (req, res) => {
         
     try {
 
-
-
-      arr.forEach( async (question) => {
+      Question.deleteMany().then(function(){ 
+          console.log("PREVIOUS TEST DELETED"); 
+          arr.forEach( async (question) => {
             
-        quesToAdd = new Question(question);
-        await quesToAdd.save();
-        
-      });  
+            quesToAdd = new Question(question);
+            await quesToAdd.save();
+            
+          });  
+    
+          res.status(200).send("Quiz Added Successfully")
+         
+      }).catch(function(error){ 
+          console.log(error); // Failure 
+      }); 
 
-      res.status(200).send("Quiz Added Successfully")
      
     } catch (err) {
       console.error(err.message);

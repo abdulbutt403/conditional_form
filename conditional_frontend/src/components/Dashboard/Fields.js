@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Fields(props) {
     const classes = useStyles();
     const {index, handleChange , fileChange , length} = props;
-    var max_increment=length-(index+1)
+    
    
 
     const uploadImage = async (event) => {
@@ -84,12 +84,12 @@ export default function Fields(props) {
       required/>
        <input  type="file" className="upload-box mt-4" name="file1" onChange={event => uploadImage(event)} />
       
-       {max_increment === 0 ? null : <TextField 
+       {index+2 > length ? null : <TextField 
         id="standard-basic" 
         value={props.inc1} 
-        label="INCREMENT" 
+        label="NEXT QUESTION" 
         name="inc1" 
-        InputProps={{ inputProps: {min:1 , max: max_increment } }}
+        InputProps={{ inputProps: {min:1 , max: length } }}
         type="number"
         className={classes.mcq}
         onChange = {event => handleChange(index,event)} />
@@ -107,11 +107,11 @@ export default function Fields(props) {
        className={classes.mcq}
        onChange = {event => handleChange(index,event)}  />
        <input  type="file" className="upload-box mt-4" name="file2" onChange={event => uploadImage(event)} required/>
-       {max_increment === 0 ? null : <TextField 
+       {index+2 > length ? null : <TextField 
         id="standard-basic" 
         value={props.inc2} 
-        label="INCREMENT" 
-        InputProps={{ inputProps: {min:1 , max: max_increment } }}
+        label="NEXT QUESTION" 
+        InputProps={{ inputProps: {min:1 , max: length } }}
         type="number"
         name="inc2" 
         className={classes.mcq}
@@ -128,11 +128,11 @@ export default function Fields(props) {
         onChange = {event => handleChange(index,event)}
       />
        <input  type="file" className="upload-box mt-4" name="file3" onChange={event => uploadImage(event)} required/>
-       {max_increment === 0 ? null :<TextField 
+       {index+2 > length ? null :<TextField 
         id="standard-basic" 
         value={props.inc3} 
-        label="INCREMENT" 
-        InputProps={{ inputProps: { min:1 , max: max_increment } }}
+        label="NEXT QUESTION" 
+        InputProps={{ inputProps: { min:1 , max: length } }}
         type="number"
         name="inc3" 
         className={classes.mcq}
