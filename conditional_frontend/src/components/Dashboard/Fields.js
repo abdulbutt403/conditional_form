@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Fields(props) {
     const classes = useStyles();
     const {index, handleChange , fileChange , length} = props;
+    var max_increment=length-(index+1)
    
 
     const uploadImage = async (event) => {
@@ -53,7 +54,9 @@ export default function Fields(props) {
 
 
     return (
+
       <div className="mt-5">
+       
       <TextField 
       label="Question Statement" 
       value={props.statement} 
@@ -78,22 +81,22 @@ export default function Fields(props) {
       required/>
        <input  type="file" className="upload-box mt-4" name="file1" onChange={event => uploadImage(event)} required/>
       
-       <TextField 
+       {max_increment === 0 ? null : <TextField 
         id="standard-basic" 
         value={props.inc1} 
-        label="ENTER NEXT" 
+        label="INCREMENT" 
         name="inc1" 
-        InputProps={{ inputProps: { min: 1 , max: length } }}
+        InputProps={{ inputProps: {min:0 , max: max_increment } }}
         type="number"
         className={classes.mcq}
         onChange = {event => handleChange(index,event)} />
-     
+       }
       </div>
 
 
 
       <div className="d-flex align-items-center">
-      <TextField
+       <TextField
        id="standard-basic"
        value={props.opt2} 
        label="OPTION 1" 
@@ -101,15 +104,15 @@ export default function Fields(props) {
        className={classes.mcq}
        onChange = {event => handleChange(index,event)}  />
        <input  type="file" className="upload-box mt-4" name="file2" onChange={event => uploadImage(event)} required/>
-       <TextField 
+       {max_increment === 0 ? null : <TextField 
         id="standard-basic" 
         value={props.inc2} 
-        label="ENTER NEXT" 
-        InputProps={{ inputProps: { min: 1 , max: length } }}
+        label="INCREMENT" 
+        InputProps={{ inputProps: {min:0 , max: max_increment } }}
         type="number"
         name="inc2" 
         className={classes.mcq}
-        onChange = {event => handleChange(index,event)} />
+        onChange = {event => handleChange(index,event)} />}
       </div>
       
       <div className="d-flex align-items-center">
@@ -122,15 +125,15 @@ export default function Fields(props) {
         onChange = {event => handleChange(index,event)}
       />
        <input  type="file" className="upload-box mt-4" name="file3" onChange={event => uploadImage(event)} required/>
-       <TextField 
+       {max_increment === 0 ? null :<TextField 
         id="standard-basic" 
         value={props.inc3} 
-        label="ENTER NEXT" 
-        InputProps={{ inputProps: { min: 1 , max: length } }}
+        label="INCREMENT" 
+        InputProps={{ inputProps: { min:0 , max: max_increment } }}
         type="number"
         name="inc3" 
         className={classes.mcq}
-        onChange = {event => handleChange(index,event)} />
+        onChange = {event => handleChange(index,event)} />}
         </div>
 
     </div>

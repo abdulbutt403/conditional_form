@@ -12,6 +12,8 @@ router.post( "/", async (req, res) => {
         
     try {
 
+
+
       arr.forEach( async (question) => {
             
         quesToAdd = new Question(question);

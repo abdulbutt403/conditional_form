@@ -88,7 +88,6 @@ export default function Orders(props) {
             <TableCell>OPTION 2</TableCell>
             
             <TableCell>OPTION 3</TableCell>
-            <TableCell >Delete</TableCell>
 
           </TableRow>
         </TableHead>
@@ -99,24 +98,13 @@ export default function Orders(props) {
               <TableCell>{row.opt1}</TableCell>
               <TableCell>{row.opt2}</TableCell>
               <TableCell>{row.opt3}</TableCell>
-              <TableCell >
-              <Button
-        variant="contained"
-        color="secondary"
-        size="small"
-        className={classes.button}
-        startIcon={<DeleteIcon />}
-      >
-        Delete
-      </Button>
-              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          Add a question
+          CREATE NEW TEST
         </Link>
       </div>
       
