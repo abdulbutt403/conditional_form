@@ -10,7 +10,7 @@ export default function Form() {
     const [classes, setClasses] = useState("bg order-1 order-md-2");
     const [styles, setstyles] = useState({backgroundImage: `url("https://content.presspage.com/uploads/2110/1920_gettyimages-476872643-239440.jpg?10000")`})
     const [Array, setArray] = useState([{
-
+         
     }])
 
     const Increment = (x) => {
@@ -78,9 +78,9 @@ export default function Form() {
         <div  style={styles} className={classes}></div>
         <div class="contents order-2 order-md-1">
     
-          <div class="container">
+          <div class="container ">
             <div class="row align-items-center justify-content-center">
-                <div class="col-md-7">
+                <div class="col-md-7 bg-pink faded">
                  <div>
                    <Question statement={Array[count].statement} q1={Array[count].opt1} q2={Array[count].opt2} q3={Array[count].opt3}  name="selector1" nextQuestion={Increment} setBackground={setBackgoundImage}/>
                  </div>

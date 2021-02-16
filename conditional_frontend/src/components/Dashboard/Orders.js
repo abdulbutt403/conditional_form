@@ -104,7 +104,7 @@ export default function Orders(props) {
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          CREATE NEW TEST
+          ADD QUESTION
         </Link>
       </div>
       

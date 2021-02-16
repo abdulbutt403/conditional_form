@@ -34,7 +34,6 @@ export default function Form() {
     const values = [...inputFields]
     values[index][event.target.name] = event.target.value
     setinputFields(values)
-    console.log(inputFields)
 
   }
 

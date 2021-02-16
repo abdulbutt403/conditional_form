@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles';
 
+import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -49,7 +50,9 @@ export default function Fields(props) {
       formData.append("upload_preset" , "fvofnssw");
 
      const res = await axios.post("https://api.cloudinary.com/v1_1/dmsus6w9v/image/upload" , formData)
+     console.log(res) 
      fileChange(index, event , res.data.url)
+
     }
 
 
@@ -79,14 +82,14 @@ export default function Fields(props) {
       className={classes.mcq}
       onChange = {event => handleChange(index,event)} 
       required/>
-       <input  type="file" className="upload-box mt-4" name="file1" onChange={event => uploadImage(event)} required/>
+       <input  type="file" className="upload-box mt-4" name="file1" onChange={event => uploadImage(event)} />
       
        {max_increment === 0 ? null : <TextField 
         id="standard-basic" 
         value={props.inc1} 
         label="INCREMENT" 
         name="inc1" 
-        InputProps={{ inputProps: {min:0 , max: max_increment } }}
+        InputProps={{ inputProps: {min:1 , max: max_increment } }}
         type="number"
         className={classes.mcq}
         onChange = {event => handleChange(index,event)} />
@@ -99,7 +102,7 @@ export default function Fields(props) {
        <TextField
        id="standard-basic"
        value={props.opt2} 
-       label="OPTION 1" 
+       label="OPTION 2" 
        name="opt2" 
        className={classes.mcq}
        onChange = {event => handleChange(index,event)}  />
@@ -108,7 +111,7 @@ export default function Fields(props) {
         id="standard-basic" 
         value={props.inc2} 
         label="INCREMENT" 
-        InputProps={{ inputProps: {min:0 , max: max_increment } }}
+        InputProps={{ inputProps: {min:1 , max: max_increment } }}
         type="number"
         name="inc2" 
         className={classes.mcq}
@@ -119,7 +122,7 @@ export default function Fields(props) {
       <TextField
         id="standard-basic" 
         value={props.opt3} 
-        label="OPTION 1" 
+        label="OPTION 3" 
         name="opt3" 
         className={classes.mcq}
         onChange = {event => handleChange(index,event)}
@@ -129,12 +132,21 @@ export default function Fields(props) {
         id="standard-basic" 
         value={props.inc3} 
         label="INCREMENT" 
-        InputProps={{ inputProps: { min:0 , max: max_increment } }}
+        InputProps={{ inputProps: { min:1 , max: max_increment } }}
         type="number"
         name="inc3" 
         className={classes.mcq}
         onChange = {event => handleChange(index,event)} />}
         </div>
+
+        <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            style={{margin: '4px 25px'}}
+        >
+            + OPTION
+        </Button>
 
     </div>
     )
